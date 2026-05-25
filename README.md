@@ -1,4 +1,5 @@
 # Single server with infinite capacity (M/M/1):(oo/FIFO)
+
 ## Aim :
 To find (a) average number of materials in the system (b) average number of materials in the conveyor (c) waiting time of each material in the system (d) waiting time of each material in the conveyor, if the arrival  of materials follow poisson process with the mean interval time 12 seconds, serivice time of lathe machine follows exponential distribution with mean serice time 1 second and average service time of robot is 7seconds.
 
@@ -16,16 +17,42 @@ This is a queuing model in which the arrival is Marcovian and departure distribu
 
 ![imAGE](2.png)
 
-
-
 ## Experiment:
 
+<img width="759" height="434" alt="Screenshot 2026-05-25 194635" src="https://github.com/user-attachments/assets/9ccb38f0-8857-4fd6-bb5d-33846f1591a5" />
 
- 
-## Program
-![image](https://github.com/ramjan1729/Single-server-infinite-capacity---Markov-Model/assets/103921593/5f1fd58d-5929-4c51-89ea-4cef009e5bad)
-
+## Program :
+```
+arr_time=float(input("Enterthe meaninterarrival timeof objects fromFeeder(insecs):"))
+ser_time=float(input("Enterthe mean interservicetimeof LatheMachine(insecs): "))
+Robot_time=float(input("EntertheAdditional timetakenfor theRobot(insecs): "))
+lam=1/arr_time
+mu=1/(ser_time+Robot_time)
+print("--------------------------------------------------------------")
+print("SingleServerwithInfiniteCapacity-(M/M/1):(oo/FIFO)")
+print("--------------------------------------------------------------")
+print("Themeanarrival rateper second: %0.2f"%lam)
+print("Themeanservice rateper second: %0.2f"%mu)
+if(lam< mu):
+Ls=lam/(mu-lam)
+Lq=Ls-lam/mu
+Ws=Ls/lam
+Wq=Lq/lam
+print("Averagenumberofobjects inthe system :%0.2f"%Ls)
+print("Averagenumberofobjects inthe conveyor: %0.2f"%Lq)
+print("Averagewaiting timeofan object inthesystem: %0.2f secs"%Ws)
+print("Averagewaiting timeofan object intheconveyor :%0.2fsecs"%Wq)
+print("Probability thatthe system isbusy: %0.2f"%(lam/mu) )
+print("Probability thatthe system isempty: %0.2f"%(1-lam/mu))
+else:
+print("Warning!ObjectsOver flowwillhappenintheconveyor")
+print("---------------------------------------------------------------")
+```
 ## Output :
+
+<img width="757" height="289" alt="Screenshot 2026-05-25 194800" src="https://github.com/user-attachments/assets/e44b74a5-d65b-4609-90aa-4e0904d609ff" />
 
 ## Result :
 
+Thus, the program has been executed successfully and the required parameters have been calculated as per the given
+conditions.
